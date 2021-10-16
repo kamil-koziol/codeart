@@ -1,0 +1,35 @@
+#!/bin/sh
+
+PAGES_URL="https://kamil-koziol.github.io/codeart/"
+IMAGES_URL="https://raw.githubusercontent.com/kamil-koziol/codeart/main/"
+SOURCE_URL="https://github.com/kamil-koziol/codeart/tree/main/"
+README="README.md"
+
+echo "# codeart\n" > $README
+echo "Shout out to [The Coding Train](https://www.youtube.com/channel/UCvjgXvBlbQiydffZU7m1_aw) for making coding challenges public and easy to undestand\n" >> $README
+echo "See all The Coding Train p5 and processing challenges [here](https://www.youtube.com/watch?v=17WoOqgXsRM&list=PLRqwX-V7Uu6ZiZxtDDRCi6uhfTH4FilpH)\n" >> $README
+echo "---\n" >> $README
+
+function print_projects() {
+    for project in $*; do
+        PROJECT_NAME=$(basename $project)
+        FOLDER=${project%"/$PROJECT_NAME"}
+        if [[ "$FOLDER" == "processing" ]]; then
+            echo  "[$PROJECT_NAME]($SOURCE_URL$project)\n" >> $README
+        else
+            echo  "[$PROJECT_NAME]($PAGES_URL$project)\n" >> $README
+        fi
+        if [ -e "$project/thumbnail.jpg" ]; then
+            echo "![$PROJECT_NAME]($IMAGES_URL$project/thumbnail.jpg)\n" >> $README
+        fi
+    done;
+}
+
+echo "## P5\n" >> $README
+echo "https://p5js.org/\n" >> $README
+print_projects p5/*
+
+echo "## Processing\n" >> $README
+echo "https://processing.org/\n" >> $README
+print_projects processing/*
+
