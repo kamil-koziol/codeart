@@ -3,34 +3,30 @@ int cols;
 int rows;
 float inc = 0.01;
 
-int particlesAmount = 20000;
+int particlesAmount = 30000;
 Particle[] particles;
 
 PVector[][] flowfield;
-color[][] colormap;
 
 void setup() {
   size(1080, 1920);
-  colorMode(HSB, 360, 100, 100);
   background(0);
+
   cols = floor(width / scl);
   rows = floor(height / scl);
   
   flowfield = new PVector[rows][cols];
-  colormap = new color[height][width];
-  
-  for(int y=0; y<height; y++) {
-    for(int x=0; x<width; x++) {
-      int h = floor(map(x, 0, width, 0, 360));
-      colormap[y][x] = color(h, 80, 100, 20);
-    }
-  }
+
   particles = new Particle[particlesAmount];
   for(int i=0; i < particlesAmount; i++) {
     particles[i] = new Particle();
   }
   
+  // Particle Settings
+  stroke(255, 255, 255, 1);
   strokeWeight(1);
+  noFill();
+
 }
 
 float zoff = 0;
@@ -52,7 +48,7 @@ void draw() {
       yoff += inc;
     }
   
-  zoff += 0.003;
+  zoff += 0.001;
   
   for(int i=0; i<particles.length; i++) {
     particles[i].follow(flowfield);
@@ -60,10 +56,10 @@ void draw() {
     particles[i].edges();
     particles[i].show();
   }
-  
-  saveFrame("frames/frame" + nf(frameCount, 5) + ".tif");
-  if(frameCount == 60 * 15) {
-    exit();
-  }
+ 
+  // saveFrame("frames/frame" + nf(frameCount, 5) + ".tif");
+  // if(frameCount == 60 * 15) {
+  //   exit();
+  // }
   
 }

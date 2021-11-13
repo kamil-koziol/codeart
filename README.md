@@ -70,9 +70,17 @@ https://processing.org/
 
 ![ConwaysGameOfLife](https://raw.githubusercontent.com/kamil-koziol/codeart/main/processing/ConwaysGameOfLife/thumbnail.jpg)
 
+[Dots](https://github.com/kamil-koziol/codeart/tree/main/processing/Dots)
+
+![Dots](https://raw.githubusercontent.com/kamil-koziol/codeart/main/processing/Dots/thumbnail.jpg)
+
 [JuliaSet](https://github.com/kamil-koziol/codeart/tree/main/processing/JuliaSet)
 
 ![JuliaSet](https://raw.githubusercontent.com/kamil-koziol/codeart/main/processing/JuliaSet/thumbnail.jpg)
+
+[Lines](https://github.com/kamil-koziol/codeart/tree/main/processing/Lines)
+
+![Lines](https://raw.githubusercontent.com/kamil-koziol/codeart/main/processing/Lines/thumbnail.jpg)
 
 [LissajousCurveTable](https://github.com/kamil-koziol/codeart/tree/main/processing/LissajousCurveTable)
 
@@ -105,4 +113,6 @@ https://processing.org/
 [Wave](https://github.com/kamil-koziol/codeart/tree/main/processing/Wave)
 
 ![Wave](https://raw.githubusercontent.com/kamil-koziol/codeart/main/processing/Wave/thumbnail.jpg)
+
+[Waves3D](https://github.com/kamil-koziol/codeart/tree/main/processing/Waves3D)
 
