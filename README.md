@@ -48,6 +48,8 @@ https://p5js.org/
 
 https://processing.org/
 
+[AStar](https://github.com/kamil-koziol/codeart/tree/main/processing/AStar)
+
 [BarnsleyFern](https://github.com/kamil-koziol/codeart/tree/main/processing/BarnsleyFern)
 
 ![BarnsleyFern](https://raw.githubusercontent.com/kamil-koziol/codeart/main/processing/BarnsleyFern/thumbnail.jpg)
@@ -104,11 +106,15 @@ https://processing.org/
 
 ![PerlinNoise](https://raw.githubusercontent.com/kamil-koziol/codeart/main/processing/PerlinNoise/thumbnail.jpg)
 
+[RotatingSquare](https://github.com/kamil-koziol/codeart/tree/main/processing/RotatingSquare)
+
 [SmartRockets](https://github.com/kamil-koziol/codeart/tree/main/processing/SmartRockets)
 
 [Spiral](https://github.com/kamil-koziol/codeart/tree/main/processing/Spiral)
 
 ![Spiral](https://raw.githubusercontent.com/kamil-koziol/codeart/main/processing/Spiral/thumbnail.jpg)
+
+[TextBubbles](https://github.com/kamil-koziol/codeart/tree/main/processing/TextBubbles)
 
 [Wave](https://github.com/kamil-koziol/codeart/tree/main/processing/Wave)
 
