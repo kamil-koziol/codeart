@@ -34,6 +34,17 @@ public class Node {
     }
   }
   
+  int distanceTo(Node other) {
+    int dx = abs(floor(other.pos.x - this.pos.x));
+    int dy = abs(floor(other.pos.y - this.pos.y));
+    
+    if(dx > dy) {
+      return 14*dy + 10*(dx-dy);
+    }
+    
+    return 14*dx + 10*(dy-dx);
+  }
+  
   public void expand() {
     boolean ended = false;
     for(int y=-1; y<=1; y++) {
@@ -94,7 +105,6 @@ public class Node {
   }
   
   public void calculateGCost() {
-    gcost = floor(dist(pos.x, pos.y, nodeManager.endNode.pos.x, 
-    nodeManager.endNode.pos.y)*10);
+    gcost = distanceTo(nodeManager.endNode);
   }
 }
