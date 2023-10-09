@@ -10,7 +10,7 @@ float loff = 0;
 long seed;
 
 void setup() {
-  size(1080, 1920, P2D);
+  size(1024, 1024, P2D);
   colorMode(HSB, 360, 360, 360, 100);
   rows = height / scale;
   cols = width / scale;

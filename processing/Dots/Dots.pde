@@ -1,4 +1,4 @@
-int scale = 14;
+int scale = 16;
 int rows;
 int cols;
 
@@ -8,17 +8,18 @@ float zoff = 0;
 
 float loff = 0;
 
+int FPS = 60;
+
 void setup() {
-  size(1024, 1024);
+  size(1080, 1920);
   colorMode(HSB, 360, 360, 360, 100);
   rows = height / scale;
   cols = width / scale;
+  strokeWeight(8);
 }
 
 void draw() {
   background(0);
-  stroke(255, 255, 255, 100);
-  strokeWeight(4);
   xoff = 0;
   yoff = 0;
   for(int y=-10; y<rows + 10; y++) {
@@ -30,14 +31,12 @@ void draw() {
       vec.mult(l);
       
       float ss = noise(xoff , yoff , xoff * 10) * 150;
-      float hue = map(angle, 0, 1, 160, 360);
+      //float hue = map(angle, 0, 1, 160, 360);
+      float hue = (angle * 360);
       stroke(hue, 360 ,360, ss);
       float dX = x*scale;
       float dY = y*scale;
       
-      //strokeWeight(2);
-      //line(dX, dY, dX + vec.x, dY + vec.y);
-      strokeWeight(8);
       point(dX + vec.x, dY + vec.y);
       xoff += 0.01;
     }
@@ -46,9 +45,11 @@ void draw() {
     yoff += 0.01;
   }
   
-  zoff += 0.001;
-   //  saveFrame("frames/frame" + nf(frameCount, 5) + ".tif");
-   //if(frameCount == 60 * 30) {
-   //  exit();
-   //}
+  
+  zoff += 0.060 / FPS;
+     saveFrame("frames/frame" + nf(frameCount, 5) + ".tif");
+   if(frameCount == FPS * 10) {
+     exit();
+   }
+   print(frameRate + "\n");
 }

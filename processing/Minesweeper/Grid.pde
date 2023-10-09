@@ -1,12 +1,41 @@
 public class Grid {
   Cell[][] cells;
   int size;
+  int cellSize;
 
-  public Grid(int size, int bombsAmount) {
+  public Grid(int size, int bombsAmount, int cellSize) {
     this.size = size;
+    this.cellSize = cellSize;
     cells = new Cell[size][size];
     putBombs(bombsAmount);
     calculateCells();
+  }
+  
+  public void draw() {
+    for (int y=0; y<size; y++) {
+    for (int x=0; x<size; x++) {
+      Cell cell = this.cells[y][x];
+      
+      stroke(200);
+      if (cell.value == 0 && !cell.hidden) {
+        fill(11, 10);
+      } else {
+        fill(33);
+      }
+      rect(x*cellSize, y*cellSize, cellSize, cellSize);
+    
+      textSize(cellSize/2);
+      
+      if(cell.hidden || cell.value == 0) {
+        continue;
+      }
+       
+        color c = this.cells[y][x].getColor();
+        fill(c);
+        textAlign(CENTER);
+        text(String.valueOf(this.cells[y][x].value), x*cellSize + cellSize/2, y*cellSize + cellSize/2 + cellSize/5);
+    }
+  }
   }
 
   public void putBombs(int amount) {
@@ -74,7 +103,7 @@ public class Grid {
     calculateCells();
   }
 
-  public void handleClick(int cellSize, int mX, int mY) {
+  public void handleClick(int mX, int mY) {
     int cx = mX / cellSize;
     int cy = mY / cellSize;
 
@@ -103,19 +132,23 @@ public class Grid {
     Cell[][] neighbors = getCellNeighbors(x, y);
     for (int i=0; i<3; i++) {
       for (int j=0; j<3; j++) {
+        
+        if(!isInBounds(x + j - 1, y + i - 1)) { continue; }
+        
+        Cell neighbour = neighbors[i][j];
 
         if (i == 1 && j == 1) {
           continue;
         }
 
-        if (neighbors[i][j] == null) {
+        if (neighbour == null) {
           continue;
         }
 
-        if (neighbors[i][j].value == 0) {
-          if (isInBounds(x + j - 1, y + i - 1) && neighbors[i][j].hidden) {
+        if (neighbour.value == 0 && neighbour.hidden) {
             chainZeroCells(x + j - 1, y + i - 1);
-          }
+        } else {
+            neighbour.enable();
         }
       }
     }
